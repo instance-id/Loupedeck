@@ -1,5 +1,9 @@
 ## Loupedeck multipurpose command runner setup for linux.
 
+## Note: Active work in progress.  
+### I made this for my personal use, so things are the way they are because of reasons
+
+---
 I primarily transfered over the logic I had written for my [Xcencelabs QuickKeys](https://github.com/instance-id/quick-keys-app) to the Loupedeck.
 
 #### Features
