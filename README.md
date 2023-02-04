@@ -9,7 +9,7 @@ MQTT message sending and receiving
 Others I am not thinking of at the moment
 
 #### Note
-It may be a bit diffifcult to figure out at first, but this includes an MQTT client in which I connect to my HomeAssistant instance anf began adding two way communication to trigger sensor behavior, and subscribe/listen for events, then run local scripts based on message payload.
+It may be a bit diffifcult to figure out at first, but this includes an MQTT client in which I connect to my HomeAssistant instance and began adding two way communication to trigger sensor behavior, and subscribe/listen for events, then run local scripts based on message payload.
 
 <img src="docs/loupedeck_linux.jpg"  width="500" >
 
