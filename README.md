@@ -3,10 +3,10 @@
 I primarily transfered over the logic I had written for my [Xcencelabs QuickKeys](https://github.com/instance-id/quick-keys-app) to the Loupedeck.
 
 #### Features
-Script Running 
-Volume Adjustment
-MQTT message sending and receiving
-Others I am not thinking of at the moment
+* Script Running  
+* Volume Adjustment
+* MQTT message sending and receiving  
+* Others I am not thinking of at the moment  
 
 #### Note
 It may be a bit diffifcult to figure out at first, but this includes an MQTT client in which I connect to my HomeAssistant instance and began adding two way communication to trigger sensor behavior, and subscribe/listen for events, then run local scripts based on message payload.
