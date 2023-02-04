@@ -1,0 +1,265 @@
+[settings]
+brightness = "0.1"
+enabled_indicator = "✔"
+disabled_indicator = "✘"
+notification_path = "notification"
+
+[mqtt]
+keepalive = 10000
+
+# --| Button 0 -------------------
+[touch.0]
+text = "Test Button"
+cmd_type = "shell"
+command = "result=$($HOME/_dev/languages/pwsh/random/ps_test_1.ps1); echo $result"
+start_command = ""
+color = "#202020"
+down_color = "#343434"
+text_color = "#ffffff"
+text_down_color = "#909090"
+
+[touch.0.press_overlay]
+duration = 1
+text = "Volume Up: %output%"
+
+# --| Button 1 -------------------
+[touch.1]
+text = "Mqtt"
+cmd_type = "mqtt"
+command = '{"message": "button_1 output"}'
+start_command = ""
+color = ""
+down_color = "#222222"
+text_color = "#343434"
+text_down_color = "#dfdfdf"
+
+[touch.1.press_overlay]
+duration = 1
+text = "Command issued"
+
+# --| Button 2 -------------------
+[touch.2]
+text = "Script"
+cmd_type = "shell"
+command = "result=$(alacritty -e '$HOME/_dev/languages/pwsh/bitwarden/bw.ps1'); echo $result"
+start_command = ""
+color = ""
+down_color = ""
+text_color = "#343434"
+text_down_color = "#909090"
+
+[touch.2.press_overlay]
+duration = 1
+text = "Command issued"
+
+# --| Button 3 -------------------
+[touch.3]
+text = "Password"
+cmd_type = "shell"
+command = "rofi-rbw -a copy"
+start_command = ""
+color = ""
+down_color = ""
+text_color = "#343434"
+text_down_color = "#909090"
+
+[touch.3.press_overlay]
+duration = 1
+text = "Command issued"
+
+# --| Button 4 -------------------
+[touch.4]
+text = "GoodSmell"
+cmd_type = "shell"
+command = "current_output=$(./scripts/toggle_wax_heater.ps1); echo $current_output"
+start_command = ""
+color = ""
+down_color = ""
+text_color = "#343434"
+text_down_color = "#909090"
+
+[touch.4.press_overlay]
+duration = 1
+text = "Volume Down: %output%"
+
+# --| Button 5 -------------------
+[touch.5]
+text = "_____"
+cmd_type = "shell"
+command = "echo 'Button 5 pressed'"
+start_command = ""
+color = ""
+down_color = ""
+text_color = "#343434"
+text_down_color = "#909090"
+
+[touch.5.press_overlay]
+duration = 1
+text = "Command issued"
+
+# --| Button 6 -------------------
+[touch.6]
+text = "____"
+cmd_type = "shell"
+command = ""
+start_command = ""
+# command = "current_output=$(scripts/toggle_wax_heater.ps1); echo $current_output"
+color = ""
+down_color = ""
+text_color = "#343434"
+text_down_color = "#909090"
+
+[touch.6.press_overlay]
+duration = 2
+text = "Device: %output%"
+
+# --| Button 7 -------------------
+[touch.7]
+text = "Source"
+cmd_type = "shell"
+command = ""
+start_command = ""
+# command = "current_output=$(scripts/change_output.ps1); echo $current_output"
+color = ""
+down_color = ""
+text_color = "#343434"
+text_down_color = "#909090"
+
+[touch.7.press_overlay]
+duration = 2
+# -- Response with %% has the symbols replaced with the output of the command ran
+# -- If response is too long, it will be truncated
+text = "Source Selected: %output%.%"
+
+# --| Button 8 -------------------
+[touch.8]
+text = ""
+cmd_type = "shell"
+command = "reload_config"
+start_command = ""
+color = ""
+down_color = ""
+text_color = "#343434"
+text_down_color = "#909090"
+
+[touch.8.press_overlay]
+duration = 1
+text = "Config Reloaded"
+
+# --| Button 9 -------------------
+[touch.9]
+text = "PC +2%"
+cmd_type = "shell"
+command = "result=$(./scripts/vol_up.ps1); echo $result"
+start_command = ""
+color = "#202020"
+down_color = "#343434"
+text_color = "#ffffff"
+text_down_color = "#909090"
+
+[touch.9.press_overlay]
+duration = 1
+text = "Volume Up: %output%"
+
+# --| Button 10 ------------------
+[touch.10]
+text = ""
+cmd_type = "shell"
+command = ""
+start_command = ""
+color = ""
+down_color = ""
+text_color = "#343434"
+text_down_color = "#909090"
+
+[touch.10.press_overlay]
+duration = 1
+text = ""
+
+# --| Button 11 ------------------
+[touch.11]
+text = ""
+cmd_type = "shell"
+command = ""
+start_command = ""
+color = ""
+down_color = ""
+text_color = "#343434"
+text_down_color = "#909090"
+
+[touch.11.press_overlay]
+duration = 1
+text = ""
+
+# --| Button 12 ------------------
+[touch.12]
+text = ""
+cmd_type = "shell"
+command = ""
+start_command = ""
+color = ""
+down_color = ""
+text_color = "#343434"
+text_down_color = "#909090"
+
+[touch.12.press_overlay]
+duration = 1
+text = ""
+
+# --| Button 13 ------------------
+[touch.13]
+text = "Home\nAssistant"
+cmd_type = "shell"
+command = "/usr/bin/firefoxpwa site launch 01G40VQQE1H4C0ZP3SFW4PED5Q"
+start_command = ""
+color = ""
+down_color = ""
+text_color = "#343434"
+text_down_color = "#909090"
+
+[touch.13.press_overlay]
+duration = 1
+text = ""
+
+# --| Button 14 ------------------
+[touch.14]
+text = "PC -2%"
+cmd_type = "shell"
+command = "result=$(./scripts/vol_down.ps1); echo $result"
+start_command = ""
+color = "#202020"
+down_color = "#343434"
+text_color = "#ffffff"
+text_down_color = "#909090"
+
+[touch.14.press_overlay]
+duration = 1
+text = "Volume Down: %output%"
+
+# --| Wheel ----------------------
+[wheel]
+color = [255, 0, 180]
+
+# --| Top Knob -------------------
+[wheel.knobTL.left]
+command = "amixer set Master 5%- > /dev/null 2>&1 && results=$(amixer sget Master | awk -F\"[][]\" '/Left:/ { print $2 }'); echo $results"
+
+[wheel.knobTL.right]
+command = "amixer set Master 5%+ > /dev/null 2>&1 && results=$(amixer sget Master | awk -F\"[][]\" '/Left:/ { print $2 }'); echo $results"
+
+[wheel.knobTL.press_overlay]
+duration = 1
+text = "Volume Up"
+
+# --| Bottom Knob ----------------
+[wheel.knobCL.left]
+command = ""
+
+[wheel.knobCL.right]
+command = ""
+
+[wheel.knobCL.press_overlay]
+duration = 1
+text = "Volume Down"
+
+

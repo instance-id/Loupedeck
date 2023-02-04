@@ -1,0 +1,8 @@
+.DS_Store
+node_modules
+.env
+.error_out.log
+**/config.psd1
+.lh/
+
+error_out.log

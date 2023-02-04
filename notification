@@ -1,0 +1,12 @@
+{
+    "duration": 4,
+    "text": "Some shit went down",
+    "color_duration": 500,
+    "start_color": "hsl(0, 100%, 50%)",
+    "end_color": "hsl(317, 100%, 50%)",
+    "type":"",
+    "data":{
+        "button":{},
+        "screen":{}
+    }
+}
