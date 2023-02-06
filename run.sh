@@ -11,12 +11,8 @@ then
   echo 'Killed loupedeck tmux'
   sleep 2
 fi
+tmux new-session -d -s "loupedeck" "node ./examples/custom/index.mjs 2>&1 | tee $log"
 
-command="node ./examples/custom/index.mjs 2>&1 | tee $log"
-tmuxSession=$(tmux new-session -d -s "loupedeck" $command )
-echo tmuxSession=$tmuxSession
-
-#bash -c "$tmuxSession 2>&1>$log"
 echo "Started Loupedeck tmux"
 tmux ls
 echo "---- Connect to it with: tmux attach-session -t loupedeck"
