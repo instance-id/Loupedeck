@@ -1,5 +1,7 @@
 #!/usr/bin/env -S pwsh-preview -noProfile -nologo
 
+# Start from powershell
+
 [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSAvoidUsingCmdletAliases', '')]
 
 param()
