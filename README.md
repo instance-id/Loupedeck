@@ -28,7 +28,6 @@ Make sure you have the following installed in your system:
 node
 bash
 tmux
-node
 npm
 
 To install node dependencies run this from the project root folder
