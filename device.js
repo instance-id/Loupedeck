@@ -273,11 +273,18 @@ class LoupedeckLiveS extends LoupedeckDevice {
     productId = '0006'
     rows = 3
     type = 'Loupedeck Live S'
-    visibleX = [15, 465]
+    visibleX = [15, 464]
+    visibleY = [10, 269]
     // Determine touch target based on x/y position
     getTarget(x, y) {
-        if (x < this.visibleX[0] || x >= this.visibleX[1]) return {}
-        const column = Math.floor((x - this.visibleX[0]) / 90)
+        // Clip to area, ensure to alway return a key
+        x = Math.max(x,this.visibleX[0])
+        x = Math.min(x,this.visibleX[1])
+        y = Math.max(y,this.visibleY[0])
+        y = Math.min(y,this.visibleY[1])
+        x -= this.visibleX[0];
+        y -= this.visibleY[0];
+        const column = Math.floor(x / 90)
         const row = Math.floor(y / 90)
         const key = row * this.columns + column
         return {

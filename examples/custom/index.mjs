@@ -66,31 +66,35 @@ loupedeck.on('connect', async ({ address }) => {
     let d = delta + 0.1;
 
     // --| Mqtt Listener -------------------
-    mqttClient = MqttSetup(conf)
-    mqttClient.on('message', function (topic, message) {
-        var msgJson = JSON5.parse(message.toString());
+    if (conf.mqtt.enabled == 1 ) {
+        mqttClient = MqttSetup(conf)
+        mqttClient.on('message', function (topic, message) {
+            var msgJson = JSON5.parse(message.toString());
 
-        let inputType = msgJson.inputType;
-        let keyIndex = msgJson.inputNum;
-        let msgText = msgJson.message;
-        let msgData = msgJson.data;
+            let inputType = msgJson.inputType;
+            let keyIndex = msgJson.inputNum;
+            let msgText = msgJson.message;
+            let msgData = msgJson.data;
 
-        // --| Message Notification ---
-        if (inputType === 'button') {
-            console.log(`Button: ${msgJson.inputNum.toString()}`)
-        }
-        else if (inputType === 'touch') {
-            loupedeck.drawKey(keyIndex, (ctx, w, h) => {
-                alertDict[keyIndex] = true;
-                drawInboundTouch(keyIndex, msgJson, ctx, w, h)
-            })
-            cycleTouchAlert(loupedeck, keyIndex, msgJson)
-        }
-        else if (inputType === 'knob') {
-            console.log(`Knob: ${msgJson.inputNum.toString()}`)
-        }
-    })
-
+            // --| Message Notification ---
+            if (inputType === 'button') {
+                console.log(`Button: ${msgJson.inputNum.toString()}`)
+            }
+            else if (inputType === 'touch') {
+                loupedeck.drawKey(keyIndex, (ctx, w, h) => {
+                    alertDict[keyIndex] = true;
+                    drawInboundTouch(keyIndex, msgJson, ctx, w, h)
+                })
+                cycleTouchAlert(loupedeck, keyIndex, msgJson)
+            }
+            else if (inputType === 'knob') {
+                console.log(`Knob: ${msgJson.inputNum.toString()}`)
+            }
+        })
+    }
+    else {
+        console.log(`Mqtt connection disabled in config.`)
+    }
     // --| Notification listener -----------
     startWatcher(conf.settings.notification_path, loupedeck);
 
@@ -288,12 +292,13 @@ loupedeck.on('touchend', async ({ changedTouches: [touch] }) => {
             }
         }
     }
-
-    if (cmdType === 'mqtt') {
-        let topicString = `loupedeck/outgoing/touch/${keyIndex}`
-        mqttClient.publish(topicString, cmd)
+    // Only use mqtt if setup for it was done, there is a config setting to enable it
+    if (mqttClient != undefined) {
+        if (cmdType === 'mqtt') {
+            let topicString = `loupedeck/outgoing/touch/${keyIndex}`
+            mqttClient.publish(topicString, cmd)
+        }
     }
-
     // --| If overlay text is not set, return
     // if (conf.touch[keyIndex].press_overlay.text == "") { return; }
     let overlay_text = conf.touch[keyIndex].press_overlay.text;
