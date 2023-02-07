@@ -21,14 +21,16 @@ export async function readConfig() {
         data = await fsPromises.readFile(p);
         config = toml.parse(data);
 
-        // --| Load .env file ---------
-        const result = dotenv.config()
-        if (result.error) {
-            throw result.error
-        }
+        if (config.mqtt.enabled == 1 ) {
+            // --| Load .env file ---------
+            const result = dotenv.config()
+            if (result.error) {
+                throw result.error
+            }
 
-        // --| Merge .env file --------
-        config.mqtt = { ...config.mqtt, ...result.parsed }
+            // --| Merge .env file --------
+            config.mqtt = { ...config.mqtt, ...result.parsed }
+        }
         console.log(config)
     }
     catch (err) { console.log("Could not load config file", err); exit(1); }

@@ -5,6 +5,7 @@ disabled_indicator = "✘"
 notification_path = "notification"
 
 [mqtt]
+enabled = 1
 keepalive = 10000
 
 # --| Button 0 -------------------
