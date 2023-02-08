@@ -173,13 +173,52 @@ loupedeck.on('disconnect', err => {
 })
 
 // --| OnButtonDown -------------------
-loupedeck.on('down', ({ id }) => {
+loupedeck.on('down', async ({ id }) => {
     console.log(`Button ${id} pressed`)
-    if (id === 0) drawKeyColors(loupedeck)
+    if (mutex) return;
+    mutex = true;
+
+    //if (id === 0) drawKeyColors(loupedeck)
+
+    let indicator = undefined;
+    let output
+
+    let cmdType = conf.button[id].cmd_type;
+    let cmd = conf.button[id].command;
+
+    if (cmdType === 'shell' ) {
+        if (cmd != "" && cmd != undefined) {
+            try {
+                output = await (await commands).runCommand(cmd);
+            } catch (error) {
+                console.log(error);
+            }
+
+            if (output != "") {
+                output = output.toString();
+            }
+
+            if (output.trim().toLowerCase().includes("ON".toLowerCase())) {
+                indicator = conf.settings.enabled_indicator;
+                console.log(`indicator: ${indicator}`);
+            } else if (output.trim().toLowerCase().includes("OFF".toLowerCase())) {
+                indicator = conf.settings.disabled_indicator;
+                console.log(`indicator: ${indicator}`);
+            }
+        }
+    }
+    // Only use mqtt if setup for it was done, there is a config setting to enable it
+    if (mqttClient != undefined) {
+        if (cmdType === 'mqtt') {
+            let topicString = `loupedeck/outgoing/touch/${keyIndex}`
+            mqttClient.publish(topicString, cmd)
+        }
+    }
+    mutex = false;
 })
 
 // --| OnButtonUp ---------------------
-loupedeck.on('up', ({ id }) => {
+loupedeck.on('up', async ({ id }) => {
     console.log(`Button ${id} released`)
 })
 
@@ -227,7 +266,24 @@ loupedeck.on('rotate', async ({ id, delta }) => {
             loupedeck.setBrightness(brightness)
         }
         else {
+            try {
+                output = await (await commands).runCommand(cmd);
+            } catch (error) {
+                console.log(error);
+            }
 
+            if (output != "") {
+                output = output.toString();
+            }
+
+            console.log(output);
+            if (output.trim().toLowerCase().includes("ON".toLowerCase())) {
+
+                console.log(`indicator: ${indicator}`);
+            } else if (output.trim().toLowerCase().includes("OFF".toLowerCase())) {
+
+                console.log(`indicator: ${indicator}`);
+            }
         }
     }
 
