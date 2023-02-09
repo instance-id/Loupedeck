@@ -43,6 +43,7 @@ for (let i = 0; i < totalKeys; i++) {
     alertDict[i] = false;
 }
 
+// --| Example MQTT Message ------------
 let jsonExample = `
 {
     "path":"loupedeck/incoming/",
@@ -159,10 +160,7 @@ function drawInboundTouch(keyIndex, msgJson, ctx, w, h, h1, s1, l1) {
     } else {
         ctx.fillStyle = "#222222";
     }
-
-    // ctx.fillStyle = getFontDownColor(keyIndex);
-
-
+    
     ctx = getTextArray(ctx, keyIndex, msgArray)
     ctx = setButtonNumber(ctx, keyIndex)
 }
@@ -319,27 +317,6 @@ loupedeck.on('touchend', async ({ changedTouches: [touch] }) => {
             setButtonNumber(ctx, keyIndex)
         })
     }
-
-    // if (overlay_text.includes("%output%") && output != "") {
-    //     let tmpOutput = "";
-    //     let tmpReplace = "";
-    //     if (overlay_text.includes("%output%.%")) {
-    //         tmpReplace = "%output%.%";
-    //         let output_arr = output.split(".");
-    //         tmpOutput = output_arr[output_arr.length - 1];
-    //     } else {
-    //         tmpReplace = "%output%";
-    //         tmpOutput = output;
-    //     }
-    //     let textLen = overlay_text.length;
-    //     let outputLen = tmpOutput.length;
-    //     let totalLen = textLen + outputLen;
-    //     if (totalLen > 32) {
-    //         let diff = totalLen - 32;
-    //         output = output.substring(textLen, outputLen - diff);
-    //     }
-    //     overlay_text = overlay_text.replace(tmpReplace, tmpOutput);
-    // }
 })
 
 // Cycle through random button colors
@@ -373,6 +350,8 @@ async function drawKeyColors(device) {
     }
 }
 
+// --| Per-key Startup Commands ------------
+// --| Primarily For Dynamic Indicators ----
 async function runStartCommand(keyIndex) {
     let cmd = conf.touch[keyIndex].command;
 

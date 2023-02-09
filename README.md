@@ -17,42 +17,53 @@ It may be a bit diffifcult to figure out at first, but this includes an MQTT cli
 
 <img src="docs/loupedeck_linux.jpg"  width="500" >
 
----
-See the below repo that the base library is capable of.  
-Powered by Loupedeck Node library
-Unofficial Node.js API for [Loupedeck Live](https://loupedeck.com/products/loupedeck-live/) & [Loupedeck Live S](https://loupedeck.com/products/loupedeck-live-s/) controllers.
 
 #### Dependencies
-Make sure you have the following installed in your system:
+---
+ Make sure you have the following installed in your system:
 
-node
-bash
-tmux
-npm
+* node
+* bash
+* tmux
+* npm
 
 To install node dependencies run this from the project root folder
-$ npm install
+
+`$ npm install`
 
 #### Configure
 
-A .env file in your project root containing your mgtt setting or an empty file
-$ touch .env
-
-Edit the .env file to sett some settings
+---
 
 Edit the config/config.toml file to setup your Loupedeck
 
+
+
+A .env file in your project root containing your MQTT settings (if applicable) or an empty file  
+
+`$ touch .env`
+
+Edit the .env file to set some settings
+
+
+
 #### Start
+---
 
 If you use powershell run
 
-$ ./run.ps1
+`$ ./run.ps1`
 
 If you use bash run
 
-$ ./run.sh
+`$ ./run.sh`
 
 This will spawn off an node instance handeling the Loupedeck in the background
 you can check the logs with the tmux command
 
-$ tmux attach-session -t loupedeck
+`$ tmux attach-session -t loupedeck`
+
+---
+See the below repo that the base library is capable of.  
+Powered by Loupedeck Node library
+Unofficial Node.js API for [Loupedeck Live](https://loupedeck.com/products/loupedeck-live/) & [Loupedeck Live S](https://loupedeck.com/products/loupedeck-live-s/) controllers.
