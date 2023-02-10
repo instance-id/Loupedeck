@@ -244,52 +244,49 @@ color = [255, 0, 180]
 # --| Top Knob -------------------
 [wheel.knobTL.left]
 cmd_type = "shell"
-#command = "amixer set Master 5%- > /dev/null 2>&1 && results=$(amixer sget Master | awk -F\"[][]\" '/Left:/ { print $2 }'); echo $results"
-command = "xdotool key XF86AudioLowerVolume && results=$(amixer sget Master | awk -F\"[][]\" '/Left:/ { print $2 }'); echo $results"
+command = "amixer set Master 5%- > /dev/null 2>&1 && results=$(amixer sget Master | awk -F\"[][]\" '/Left:/ { print $2 }'); echo $results"
 
 [wheel.knobTL.right]
 cmd_type = "shell"
-#command = "amixer set Master 5%+ > /dev/null 2>&1 && results=$(amixer sget Master | awk -F\"[][]\" '/Left:/ { print $2 }'); echo $results"
-command = "xdotool key XF86AudioRaiseVolume && results=$(amixer sget Master | awk -F\"[][]\" '/Left:/ { print $2 }'); echo $results"
+command = "amixer set Master 5%+ > /dev/null 2>&1 && results=$(amixer sget Master | awk -F\"[][]\" '/Left:/ { print $2 }'); echo $results"
 
 [button.knobTL]
-text = "Toggle Mute"
 cmd_type = "shell"
-command = "xdotool key XF86AudioMute"
+command = "echo button.knobTL"
 
 # --| Bottom Knob ----------------
 [wheel.knobCL.left]
 cmd_type = "shell"
-command = "amixer set Capture 5%- > /dev/null 2>&1 && results=$(amixer sget Capture | awk -F\"[][]\" '/Left:/ { print $2 }'); echo $results"
+command = "echo wheel.knobCL.left"
 
 [wheel.knobCL.right]
 cmd_type = "shell"
-command = "amixer set Capture 5%+ > /dev/null 2>&1 && results=$(amixer sget Capture | awk -F\"[][]\" '/Left:/ { print $2 }'); echo $results"
+command = "echo wheel.knobCL.right"
 
 [button.knobCL]
 cmd_type = "shell"
-command = "xdotool key XF86AudioMicMute ; xdotool search --desktop 0 --class Zoom windowactivate key Alt+a ; echo ToggleMic"
+command = "echo button.knobCL"
 
 # --| Button 0 ------------------
 [button.0]
 cmd_type = "shell"
-command = "xdotool key XF86AudioMicMute ; xdotool search --desktop 0 --class Zoom windowactivate key Alt+a ; echo ToggleMic"
+command = "echo button.0"
 color = ""
 
 # --| Button 1 ------------------
 [button.1]
 cmd_type = "shell"
-command = "xdotool key XF86AudioMicMute ; xdotool search --desktop 0 --class Zoom windowactivate key Alt+a ; echo ToggleMic"
+command = "echo button.1"
 color = ""
 
 # --| Button 2 ------------------
 [button.2]
 cmd_type = "shell"
-command = "xdotool key XF86AudioMicMute ; xdotool search --desktop 0 --class Zoom windowactivate key Alt+a ; echo ToggleMic"
+command = "echo button.2"
 color = ""
 
 # --| Button 3 ------------------
 [button.3]
 cmd_type = "shell"
-command = "xdotool key XF86AudioMicMute ; xdotool search --desktop 0 --class Zoom windowactivate key Alt+a ; echo ToggleMic"
+command = "echo button.3"
 color = ""
