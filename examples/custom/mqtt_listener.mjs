@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import * as mqtt from "mqtt"  // import everything inside the mqtt module and give it the namespace "mqtt"
+import * as mqtt from "mqtt" 
 import JSON5 from 'json5';
 
 let client; // create a client

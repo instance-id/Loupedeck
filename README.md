@@ -112,3 +112,6 @@ command = "xdotool key XF86AudioMicMute ; xdotool search --desktop 0 --class Zoo
 See the below repo that the base library is capable of.  
 Powered by Loupedeck Node library
 Unofficial Node.js API for [Loupedeck Live](https://loupedeck.com/products/loupedeck-live/) & [Loupedeck Live S](https://loupedeck.com/products/loupedeck-live-s/) controllers.
+
+---
+![alt text](https://i.imgur.com/cg5ow2M.png "instance.id")
